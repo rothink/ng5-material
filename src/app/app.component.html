@@ -1,58 +1,47 @@
-<!--The content below is only a placeholder and can be replaced.-->
-
-
-  
-<button mat-raised-button color="primary">Primary</button>
-
-
-
-<mat-card>
-  <mat-form-field>
-    <input matInput [(ngModel)]="answer" placeholder="Qual o seu nome?">
-  </mat-form-field>
-  <br/>
-
-  <button mat-raised-button (click)="showAnswer()" > Me responda!  </button>
-  <mat-spinner [style.display]="showSpinner ? 'block' : 'none'" ></mat-spinner>
-</mat-card>
-
-<mat-card *ngIf="answerDisplay">
-  <h1>{{answerDisplay}}, você está certo!</h1>
-</mat-card>
-
-  
 <div>
-  <mat-sidenav-container class="example-sidenav-fab-container">
-    <mat-sidenav #sidenav mode="side" opened="true">
-      <button mat-mini-fab class="example-fab" (click)="sidenav.toggle()">
-        <mat-icon>add</mat-icon>
-      </button>
-      <div class="example-scrolling-content">
-        Lorem ipsum dolor sit amet, pede a libero aenean phasellus, lectus metus sint ut risus,
-        fusce vel in pellentesque. Nisl rutrum etiam morbi consectetuer tempor magna, aenean nullam
-        nunc id, neque vivamus interdum sociis nulla scelerisque sem, dolor id wisi turpis magna
-        aliquam magna. Risus accumsan hac eget etiam donec sed, senectus erat mattis quam, tempor
-        vel urna occaecat cras, metus urna augue nec at. Et morbi amet dui praesent, nec eu at,
-        ligula ipsum dui sollicitudin, quis nisl massa viverra ligula, mauris fermentum orci arcu
-        enim fringilla. Arcu erat nulla in aenean lacinia ullamcorper, urna ante nam et sagittis,
-        tristique vehicula nibh ipsum vivamus, proin proin. Porta commodo nibh quis libero amet.
-        Taciti dui, sapien consectetuer.
-      </div>
-    </mat-sidenav>
-    <button mat-mini-fab class="example-fab" (click)="sidenav.toggle()">
-      <mat-icon>add</mat-icon>
+  <mat-toolbar color="primary">
+    <span><mat-icon>mood</mat-icon></span>
+
+    <span>Yay, Material in Angular 2!</span>
+
+    <button mat-icon-button [mat-menu-trigger-for]="menu">
+      <mat-icon>more_vert</mat-icon>
     </button>
-    <div class="example-scrolling-content">
-      Lorem ipsum dolor sit amet, pede a libero aenean phasellus, lectus metus sint ut risus, fusce
-      vel in pellentesque. Nisl rutrum etiam morbi consectetuer tempor magna, aenean nullam nunc id,
-      neque vivamus interdum sociis nulla scelerisque sem, dolor id wisi turpis magna aliquam magna.
-      Risus accumsan hac eget etiam donec sed, senectus erat mattis quam, tempor vel urna occaecat
-      cras, metus urna augue nec at. Et morbi amet dui praesent, nec eu at, ligula ipsum dui
-      sollicitudin, quis nisl massa viverra ligula, mauris fermentum orci arcu enim fringilla. Arcu
-      erat nulla in aenean lacinia ullamcorper, urna ante nam et sagittis, tristique vehicula nibh
-      ipsum vivamus, proin proin. Porta commodo nibh quis libero amet. Taciti dui, sapien
-      consectetuer.
-    </div>
-  </mat-sidenav-container>
+  </mat-toolbar>
+  <mat-menu x-position="before" #menu="matMenu">
+    <button mat-menu-item>Option 1</button>
+    <button mat-menu-item>Option 2</button>
+  </mat-menu>
+
+  <mat-card>
+    <button mat-button>All</button>
+    <button mat-raised-button>Of</button>
+    <button mat-raised-button color="primary">The</button>
+    <button mat-raised-button color="accent">Buttons</button>
+  </mat-card>
+
+  <span class="done">
+    <button mat-fab>
+      <mat-icon>check circle</mat-icon>
+    </button>
+  </span>
 </div>
 
+
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Custom Toolbar</span>
+  </mat-toolbar-row>
+
+  <mat-toolbar-row>
+    <span>Second Line</span>
+    <span class="example-spacer"></span>
+    <mat-icon class="example-icon">verified_user</mat-icon>
+  </mat-toolbar-row>
+
+  <mat-toolbar-row>
+    <span>Third Line</span>
+    <span class="example-spacer"></span>
+    <mat-icon class="">delete</mat-icon>
+  </mat-toolbar-row>
+</mat-toolbar>
