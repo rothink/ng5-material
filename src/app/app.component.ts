@@ -20,5 +20,5 @@ export class AppComponent {
       this.answerDisplay = this.answer;
       this.showSpinner = false;
     }, 2000 );
-
+  }
 }
