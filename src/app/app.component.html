@@ -1,47 +1,60 @@
-<div>
-  <mat-toolbar color="primary">
-    <span><mat-icon>mood</mat-icon></span>
+<button mat-raised-button (click)="isLaunched = true" *ngIf="!isLaunched" color="primary">
+  Launch Fullscreen Sidenav Demo
+</button>
 
-    <span>Yay, Material in Angular 2!</span>
+<div class="demo-sidenav-area" *ngIf="isLaunched">
+  <mat-toolbar *ngIf="showHeader && !coverHeader">Header</mat-toolbar>
+  <mat-sidenav-container>
+    <mat-sidenav #start (open)="myinput.focus()" [mode]="mode"
+                 [fixedInViewport]="fixed" [fixedTopGap]="fixedTop" [fixedBottomGap]="fixedBottom">
+      Start Side Sidenav
+      <br>
+      <button mat-button (click)="start.close('mouse')">Close</button>
+      <br>
+      <button mat-button (click)="end.open('keyboard')">Open End Side</button>
+      <br>
+      <button mat-button (click)="modeIndex = (modeIndex + 1) % 3">Toggle Mode</button>
+      <div>Mode: {{start.mode}}</div>
+      <br>
+      <input #myinput>
+      <div class="demo-filler-content" *ngFor="let c of fillerContent">Filler Content</div>
+    </mat-sidenav>
 
-    <button mat-icon-button [mat-menu-trigger-for]="menu">
-      <mat-icon>more_vert</mat-icon>
-    </button>
-  </mat-toolbar>
-  <mat-menu x-position="before" #menu="matMenu">
-    <button mat-menu-item>Option 1</button>
-    <button mat-menu-item>Option 2</button>
-  </mat-menu>
+    <mat-sidenav #end position="end"
+                 [fixedInViewport]="fixed" [fixedTopGap]="fixedTop" [fixedBottomGap]="fixedBottom">
+      End Side Sidenav
+      <br>
+      <button mat-button (click)="end.close('mouse')">Close</button>
+      <div class="demo-filler-content" *ngFor="let c of fillerContent">Filler Content</div>
+    </mat-sidenav>
 
-  <mat-card>
-    <button mat-button>All</button>
-    <button mat-raised-button>Of</button>
-    <button mat-raised-button color="primary">The</button>
-    <button mat-raised-button color="accent">Buttons</button>
-  </mat-card>
+    <mat-sidenav-content>
+      <mat-toolbar *ngIf="showHeader && coverHeader">Header</mat-toolbar>
+      <div class="demo-sidenav-content">
+        <div>
+          <button mat-raised-button (click)="isLaunched = false">
+            Exit Fullscreen Sidenav Demo
+          </button>
+        </div>
 
-  <span class="done">
-    <button mat-fab>
-      <mat-icon>check circle</mat-icon>
-    </button>
-  </span>
+        <div>
+          <h3>Sidenav</h3>
+          <button mat-button (click)="start.toggle(undefined, 'mouse')">Toggle Start Side Sidenav</button>
+          <button mat-button (click)="end.toggle(undefined, 'mouse')">Toggle End Side Sidenav</button>
+          <mat-checkbox [(ngModel)]="fixed">Fixed mode</mat-checkbox>
+          <mat-checkbox [(ngModel)]="coverHeader">Sidenav covers header/footer</mat-checkbox>
+        </div>
+
+        <div>
+          <h3>Header / Footer</h3>
+          <mat-checkbox [(ngModel)]="showHeader">Show header</mat-checkbox>
+          <mat-checkbox [(ngModel)]="showFooter">Show footer</mat-checkbox>
+        </div>
+
+        <div class="demo-filler-content" *ngFor="let c of fillerContent">Filler Content</div>
+      </div>
+      <mat-toolbar *ngIf="showFooter && coverHeader">Footer</mat-toolbar>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  <mat-toolbar *ngIf="showFooter && !coverHeader">Footer</mat-toolbar>
 </div>
-
-
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <span>Custom Toolbar</span>
-  </mat-toolbar-row>
-
-  <mat-toolbar-row>
-    <span>Second Line</span>
-    <span class="example-spacer"></span>
-    <mat-icon class="example-icon">verified_user</mat-icon>
-  </mat-toolbar-row>
-
-  <mat-toolbar-row>
-    <span>Third Line</span>
-    <span class="example-spacer"></span>
-    <mat-icon class="">delete</mat-icon>
-  </mat-toolbar-row>
-</mat-toolbar>
